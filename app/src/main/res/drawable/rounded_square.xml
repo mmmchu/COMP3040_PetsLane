@@ -2,7 +2,7 @@
 
     <!-- res/drawable/rounded_square.xml -->
     <shape xmlns:android="http://schemas.android.com/apk/res/android">
-        <solid android:color="#FFFFFF" /> <!-- Set the background color for the square -->
+        <solid android:color="#E8E8E8" /> <!-- Set the background color for the square -->
         <corners android:radius="20dp" /> <!-- Set the corner radius to make it circular -->
     </shape>
 

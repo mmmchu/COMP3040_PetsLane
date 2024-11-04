@@ -27,4 +27,15 @@
     <string name="search">Search....</string>
     <string name="my_pets">My Pets</string>
     <string name="aboutus">About us</string>
+    <string name="schedule">Schedule</string>
+    <string name="mealplan">Meal plan</string>
+    <string name="trainingresources">Training\nresources</string>
+    <string name="uploadimage">Upload image on map</string>
+    <string name="mealplandesc">mealplandesc</string>
+    <string name="my_petsdesc">my_petsdesc</string>
+    <string name="scheduledesc">scheduledesc</string>
+    <string name="trainingresourcesdesc">trainingresourcesdesc</string>
+    <string name="uploadimagedesc">uploadimagedesc</string>
+    <string name="dashboard">dashboard</string>
+    <string name="welcome_to_petslane">Welcome to PetsLane!</string>
 </resources>

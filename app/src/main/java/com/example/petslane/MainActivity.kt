@@ -6,6 +6,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import android.widget.ImageButton
 import android.app.AlertDialog
+import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,30 +26,38 @@ class MainActivity : AppCompatActivity() {
         // Initialize the toolbar and sidebar button
         sidebarButton = findViewById(R.id.sidebar_button)
         sidebarButton.setOnClickListener {
-            drawerLayout.openDrawer(androidx.core.view.GravityCompat.START)
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        // Load HomeFragment as the default fragment
+        if (savedInstanceState == null) { // Ensure it's only loaded once
+            loadFragment(home())
         }
 
         // Set up NavigationView item click listener
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    // Handle Home navigation here if needed
+                    loadFragment(home())
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.UserProfile -> {
-                    // Handle UserProfile navigation here if needed
+                    // Load UserProfileFragment here
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.about -> {
-                    // Handle About navigation here if needed
+                    // Load AboutFragment here
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.settings -> {
-                    // Handle Settings navigation here if needed
+                    // Load SettingsFragment here
+                    drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.logout -> {
-                    // Show confirmation dialog before logging out
                     showLogoutConfirmationDialog()
                     true
                 }
@@ -56,18 +66,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun loadFragment(fragment: Fragment) {
+        // Replace the existing fragment with the new fragment
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
     private fun showLogoutConfirmationDialog() {
         // Create and show an AlertDialog to confirm log out
         AlertDialog.Builder(this)
             .setTitle("Log Out")
             .setMessage("Are you sure you want to exit the app?")
             .setPositiveButton("Yes") { dialog, _ ->
-                // User confirmed, close the app
                 dialog.dismiss()
                 finishAffinity()
             }
             .setNegativeButton("No") { dialog, _ ->
-                // User canceled, dismiss the dialog
                 dialog.dismiss()
             }
             .create()
