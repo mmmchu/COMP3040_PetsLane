@@ -6,15 +6,13 @@
     android:layout_height="match_parent"
     android:elevation="10dp"
     android:background="@drawable/rounded_square"
-    tools:context=".home">
+    tools:context=".Home">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- My Pets Button -->
 
-        <!-- Schedules Button -->
 
         <LinearLayout
             android:id="@+id/mypets"

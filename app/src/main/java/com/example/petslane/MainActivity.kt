@@ -8,7 +8,6 @@ import android.widget.ImageButton
 import android.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var drawerLayout: DrawerLayout
@@ -31,14 +30,14 @@ class MainActivity : AppCompatActivity() {
 
         // Load HomeFragment as the default fragment
         if (savedInstanceState == null) { // Ensure it's only loaded once
-            loadFragment(home())
+            loadFragment(Home())
         }
 
         // Set up NavigationView item click listener
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    loadFragment(home())
+                    loadFragment(Home())
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
@@ -66,8 +65,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadFragment(fragment: Fragment) {
-        // Replace the existing fragment with the new fragment
+     fun loadFragment(fragment: Fragment) {
+        val layoutId = if (fragment is Home) {
+            R.layout.activity_main // Layout with Toolbar
+        } else {
+            R.layout.activity_main_no_toolbar // Layout without Toolbar
+        }
+
+        setContentView(layoutId) // Set the content view to the appropriate layout
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()
